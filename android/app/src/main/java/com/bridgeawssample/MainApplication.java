@@ -2,6 +2,8 @@ package com.bridgeawssample;
 
 import android.app.Application;
 import android.content.Context;
+
+import com.connectsdk.discovery.DiscoveryManager;
 import com.facebook.react.PackageList;
 import com.facebook.react.ReactApplication;
 import com.facebook.react.ReactInstanceManager;
@@ -26,6 +28,7 @@ public class MainApplication extends Application implements ReactApplication {
           List<ReactPackage> packages = new PackageList(this).getPackages();
           // Packages that cannot be autolinked yet can be added manually here, for example:
           // packages.add(new MyReactNativePackage());
+            packages.add(new ConnectSDKNativePackage());
           return packages;
         }
 
@@ -45,6 +48,7 @@ public class MainApplication extends Application implements ReactApplication {
     super.onCreate();
     SoLoader.init(this, /* native exopackage */ false);
     initializeFlipper(this, getReactNativeHost().getReactInstanceManager());
+      DiscoveryManager.init(getApplicationContext());
   }
 
   /**
